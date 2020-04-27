@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "./directory.styles.scss";
-import { MenuItem } from "../menu-item/menu-item.component";
+import MenuItem from "../menu-item/menu-item.component";
 
-export function Directory(props) {
+function Directory(props) {
   const [state, setState] = useState({
     sections: [
       {
@@ -42,11 +42,11 @@ export function Directory(props) {
 
   return (
     <div className="directory-menu">
-      {state.sections.map(({ title, imageUrl, id, size }) => {
-        return (
-          <MenuItem key={id} title={title} imageUrl={imageUrl} size={size} />
-        );
+      {state.sections.map(({ id, ...otherSectionProps }) => {
+        return <MenuItem key={id} {...otherSectionProps} />;
       })}
     </div>
   );
 }
+
+export default Directory;
