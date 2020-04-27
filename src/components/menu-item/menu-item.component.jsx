@@ -1,8 +1,11 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
+import { useHistory, useRouteMatch, withRouter } from "react-router-dom";
 import "./menu-item.styles.scss";
 
-function MenuItem({ title, imageUrl, size, history, linkUrl, match }) {
+export function MenuItem({ title, imageUrl, size, linkUrl }) {
+  const match = useRouteMatch();
+  const history = useHistory();
+
   return (
     <div
       className={`${size} menu-item`}
@@ -19,5 +22,3 @@ function MenuItem({ title, imageUrl, size, history, linkUrl, match }) {
     </div>
   );
 }
-
-export default withRouter(MenuItem);
